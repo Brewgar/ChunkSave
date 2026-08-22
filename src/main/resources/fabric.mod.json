@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "quicksave",
+  "version": "${version}",
+  "name": "QuickSave",
+  "description": "Eliminates Out-Of-Memory crashes during massive world pre-generation (Chunky, jjthunder) by interposing a bounded, backpressured, multi-threaded asynchronous buffer between vanilla chunk serialization and disk I/O.",
+  "authors": [
+    "QuickSave Team"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.quicksave.QuickSaveMod"
+    ]
+  },
+  "mixins": [
+    "quicksave.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": "~1.20.1",
+    "java": ">=17"
+  }
+}
