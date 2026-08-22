@@ -1,4 +1,4 @@
-# QuickSave
+# ChunkSave
 
 A Fabric 1.20.1 mod that eliminates Out-Of-Memory crashes during massive world
 pre-generation (Chunky, jjthunder, etc.) by interposing a **bounded,
