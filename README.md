@@ -12,14 +12,14 @@ inside `StorageIoWorker`, drained for disk writing through a narrow lane into
 `RegionBasedStorage` / `RegionFile`. When generation outpaces your SSD, chunks
 accumulate in RAM until the JVM dies with OOM.
 
-## How QuickSave works
+## How ChunkSave works
 
 ```
 Server thread ──► setResult(pos, nbt)   [wrapped via MixinExtras @WrapMethod]
                         │
                         ▼
         ┌───────────────────────────────────┐
-        │ QuickSavePipeline                  │
+        │ ChunkSavePipeline                  │
         │  • S striped bounded queues        │  ◄─ HARD CAP: producers block here
         │  • per-position coalescing map     │     (world-gen throttles naturally)
         │  • recycled entry objects (low GC) │
@@ -42,7 +42,7 @@ Key properties:
   a JVM shutdown hook performs a budgeted emergency flush + forced vanilla
   synchronous drain even after hard crashes.
 
-## Configuration — `config/quicksave.json`
+## Configuration — `config/ChunkSave.json`
 
 | Key                     | Default  | Meaning                                                       |
 |-------------------------|----------|---------------------------------------------------------------|
