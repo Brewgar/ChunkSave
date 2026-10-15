@@ -1,18 +1,25 @@
 # ChunkSave
 
-A Fabric 1.20.1 mod that completely prevents out of memory crashes without almost any performance cost when pre-generating massive world generation mods like [JJThunder](https://modrinth.com/datapack/jjthunder-to-the-max) or [Big Globe](https://modrinth.com/mod/big-globe) with tools like [Chunky](https://github.com/pop4959/Chunky). 
+A Fabric 1.20.1 mod that stops your game from running out of memory while you pre-generate huge worlds.
 
-## The Problem
-When you pre-generate a Minecraft world, the game often creates new chunks much faster than your drive can save them. Vanilla Minecraft handles this by keeping all those unsaved chunks in your RAM. If your drive can't keep up with the generation speed, your RAM eventually fills up completely, causing the game or server to crash.
+It's built for the monster worldgen mods like [JJThunder](https://modrinth.com/datapack/jjthunder-to-the-max) and [Big Globe](https://modrinth.com/mod/big-globe), used with a pre-generator like [Chunky](https://github.com/pop4959/Chunky). It costs almost nothing in performance.
 
-## The Solution
-ChunkSave fixes this by acting as a traffic controller between world generation and your hard drive. 
+## The problem
 
-Instead of letting RAM fill up infinitely, ChunkSave sets a strict limit on how many chunks can wait in memory. If that limit is reached, it temporarily pauses world generation until your drive catches up. 
+When you pre-generate a world, Minecraft often creates chunks faster than your drive can write them. Vanilla's answer is to keep all the unsaved chunks in RAM. If your drive can't keep up, the RAM fills up, and then everything crashes. Hours of generation, gone, because the disk was a bit slow.
 
-**To Install:**
-Drop the `.jar` file into your `mods` folder. 
-*Requires [Fabric Loader](https://fabricmc.net/use/installer/) 0.15 or higher and the [Fabric API](https://modrinth.com/mod/fabric-api).*
+## The fix
 
-**To Build:**
-Make sure you have JDK 17 installed. Run `gradle build` in the project directory. The compiled mod will be located in `build/libs/`.
+ChunkSave works like a traffic controller between world generation and your drive. It sets a hard limit on how many chunks can wait in memory. When the limit is hit, generation pauses until the drive catches up, and then carries on.
+
+## Install
+
+Put the `.jar` in your `mods` folder. You need [Fabric Loader](https://fabricmc.net/use/installer/) 0.15 or newer and the [Fabric API](https://modrinth.com/mod/fabric-api).
+
+## Build
+
+Install JDK 17, then run `gradle build` in the project folder. The mod ends up in `build/libs/`.
+
+## License
+
+MIT.
